@@ -3,6 +3,8 @@ Ovo je stari projekat iz prve godine fakulteta, nazalost izgubljena je konacna v
 
 ---
 
+![](screenshot2.png)
+
 3D Objekti se sastoje od 
 - niza verteks(pozicija3D, pozicija2D-temp)
 - niza poligona(indeksi verteksa od kojih su sastavljeni kao i materijal)
@@ -56,6 +58,10 @@ void DrawScene(struct Scena* _Scena, int frameNumber)
 ```
 DrawScene prima scenu, kao i broj frejmova, koje koristi za jednostavne animacije, kao što je rotiranje zraka sunca tokom vremena.
 
+![](sunce2.png)
+![](sunce1.png)
+
+
 Zato što je ovaj program pisan u c-u za procesor, a ne grafičku, optimizovan je da za renderovanje prvo modele sortira po udaljenosti od kamere. Modeli se renderuju od najdaljeg do najbližeg, a potom se svakom modelu sortiraju svi poligoni i renderuju od pozadi. 
 
 Renderovanje modela prvo primenjuje transformacije pretvaranjem ga na Screenspace, a potom cull-uje poligone koji ne gledaju ka kameri.
@@ -74,3 +80,7 @@ Kad je prona]en taj ugao, treća tačka se rotira za taj ugao unazad, tako da tr
 Poligonima koji su preživeli culling :skull: su spremni za primenu osvetljenja. 
 
 Prolazi se kroz sva svetla, računa se standardni skalarni proizvod normale poligona i pravca svetla kako bi se izračunao ugao. Množi se cos ugla sa bojom svetla, bojom materijala i intenzitetom svetla i akumulira za sva svetla. Pošto biblioteka podržava samo određene boje, poligon posmatra koja od dostupnih nijansi joj je najbliža i uzima tu. Predstavlja boje kao 3D koordinate i računa udaljenost, za to nije potrebno korenovanje jer ne utiče na to koja je najbliža.
+
+---
+
+![](screenshot1.png)
